@@ -1,5 +1,5 @@
-﻿using System.Configuration;
-
+﻿using SocialNetwork.Models;
+using System.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -25,5 +25,5 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+CurrentAccount.initSession(1);
 app.Run();
