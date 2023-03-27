@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SyLV\\OneDrive\\Máy tính\\SocialNetwork_ASPnet_Nhom1\\SocialNetwork\\SocialNetwork.csproj": {}
+    "C:\\Users\\SyLV\\OneDrive\\Máy tính\\SyBranch\\SocialNetwork\\SocialNetwork.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SyLV\\OneDrive\\Máy tính\\SocialNetwork_ASPnet_Nhom1\\SocialNetwork\\SocialNetwork.csproj": {
+    "C:\\Users\\SyLV\\OneDrive\\Máy tính\\SyBranch\\SocialNetwork\\SocialNetwork.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SyLV\\OneDrive\\Máy tính\\SocialNetwork_ASPnet_Nhom1\\SocialNetwork\\SocialNetwork.csproj",
+        "projectUniqueName": "C:\\Users\\SyLV\\OneDrive\\Máy tính\\SyBranch\\SocialNetwork\\SocialNetwork.csproj",
         "projectName": "SocialNetwork",
-        "projectPath": "C:\\Users\\SyLV\\OneDrive\\Máy tính\\SocialNetwork_ASPnet_Nhom1\\SocialNetwork\\SocialNetwork.csproj",
+        "projectPath": "C:\\Users\\SyLV\\OneDrive\\Máy tính\\SyBranch\\SocialNetwork\\SocialNetwork.csproj",
         "packagesPath": "C:\\Users\\SyLV\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SyLV\\OneDrive\\Máy tính\\SocialNetwork_ASPnet_Nhom1\\SocialNetwork\\obj\\",
+        "outputPath": "C:\\Users\\SyLV\\OneDrive\\Máy tính\\SyBranch\\SocialNetwork\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\SyLV\\AppData\\Roaming\\NuGet\\NuGet.Config",

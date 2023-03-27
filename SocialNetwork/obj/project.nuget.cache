@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nf81Ayy9P4awj7A6cRnaepBTyLSlTBSBvR9EP0ZpzNSPsoOCH2NkURMw+lak3eBVg1JwzIbmzJFMFNRjeHgg6A==",
+  "dgSpecHash": "WbgkNx71f6eyt3LOxAQBGijW6RjMBnqTXLLLJq50u1BA+/qNAIakq864ZNCLqTr1x9XB8wKosjHjY7NfBfV1yA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\SyLV\\OneDrive\\Máy tính\\SocialNetwork_ASPnet_Nhom1\\SocialNetwork\\SocialNetwork.csproj",
+  "projectFilePath": "C:\\Users\\SyLV\\OneDrive\\Máy tính\\SyBranch\\SocialNetwork\\SocialNetwork.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SyLV\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\SyLV\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
