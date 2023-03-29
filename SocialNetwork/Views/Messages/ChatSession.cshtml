@@ -33,13 +33,14 @@
                                 </div>
                                 <div class="flex-1 min-w-0 relative text-gray-500">
                                     <h4 class="text-black font-semibold dark:text-white">@item.Value.FullName</h4>
-                                    <span class="absolute right-0 top-1 text-xs">Sun</span>
                                     @if (item.Key.Messages.Count() > 0)
                                     {
+                                        <span class="absolute right-0 top-1 text-xs">@item.Key.Messages.Last().CreateAt.ToString().Substring(10)</span>
                                         <p class="truncate">@item.Key.Messages.Last().MessageContent</p>
                                     }
                                     else
                                     {
+                                        <span class="absolute right-0 top-1 text-xs">--</span>
                                         <p class="truncate">In box to love</p>
                                     }
                                 </div>
@@ -77,8 +78,6 @@
                     <div class="border-t dark:border-gray-600">
 
                         <div class="lg:p-8 p-4 space-y-3">
-
-
                             <!-- my message-->
                             @foreach (var item in Model.listMessage)
                             {
