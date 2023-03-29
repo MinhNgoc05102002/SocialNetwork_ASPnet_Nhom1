@@ -49,7 +49,6 @@ namespace SocialNetwork.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Register(Account account)
         {
-            ModelState.AddModelError("Email", "");
             if (db.Accounts.FirstOrDefault(x => x.Email == account.Email) != null)
             {
                 ModelState.AddModelError("Email", "Email has already been taken.");
