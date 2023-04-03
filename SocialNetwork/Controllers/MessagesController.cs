@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure.Messaging;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using SocialNetwork.Models;
@@ -116,23 +117,33 @@ namespace SocialNetwork.Controllers
             dbContext.SaveChanges();
         }
 
+        // khong biet tai sao o day ko truyen duoc qua body
         [HttpPost]
-        public IActionResult SendMessage(string mess, int chatID)
+        public IActionResult SendMessage(Message message)
         {
-            Message message = new Message();
-            message.ChatId = chatID;
-            message.MessageContent = mess;
+            //Message message = new Message();
+            //message.ChatId = chatID;
+            //message.MessageContent = mess;
             message.CreateAt = DateTime.Now;
-            message.AccountId = chatID;
+            //message.AccountId = chatID;
+            message.AccountId = message.ChatId;
             //CurrentAccount.account.Messages.Add(message);
             dbContext.Messages.Add(message);
-            dbContext.ChatSessions.SingleOrDefault(x => x.ChatId == chatID).Messages.Add(message);
+            dbContext.ChatSessions.SingleOrDefault(x => x.ChatId == message.ChatId).Messages.Add(message);
             
             dbContext.Accounts.SingleOrDefault(x => x.AccountId == CurrentAccount.account.AccountId).Messages.Add(message);
             
             dbContext.SaveChanges();
             dbContext.SaveChangesAsync();
-            return RedirectToAction("ChatSession", new {chatID = chatID });
+
+            var data = new
+            {
+                content = message.MessageContent,
+                createAt = message.CreateAt.ToString(),
+                accountAvatar = CurrentAccount.account.Avatar
+            };
+            return new JsonResult(data);
+            // return RedirectToAction("ChatSession", new {chatID = message.ChatId });
         }
 
         [HttpGet]

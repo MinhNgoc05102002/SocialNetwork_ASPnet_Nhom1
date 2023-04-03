@@ -37,8 +37,10 @@ namespace SocialNetwork.Controllers
                     CurrentAccount.initSession(account.AccountId);
                     return RedirectToAction("Index", "Home");
                 }
+                ModelState.AddModelError("Email", "Invalid email or password");
+                return View();
             }
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
         // =================== Logout ===================
