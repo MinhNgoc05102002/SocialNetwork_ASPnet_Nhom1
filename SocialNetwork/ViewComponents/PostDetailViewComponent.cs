@@ -11,10 +11,13 @@ namespace SocialNetwork.ViewComponents
 
         public IViewComponentResult Invoke()
         {
-            int currentAccountID = CurrentAccount.account.AccountId;
+            // sua thanh session cho nay 
+            int? currentAccountID = HttpContext.Session.GetInt32("accountId");
+
             var lstAccountIDFollow = _context.Relationships.Where(x=>x.SourceAccountId == currentAccountID && x.TypeId == 2).Select(x=>x.TargetAccountId).ToList();
             var lstPost = _context.Posts.Where(x => lstAccountIDFollow.Contains(x.AccountId));
             var lstPostDetail = new List<PostDetailViewModel>();
+
             foreach (var post in lstPost)
             {
                 lstPostDetail.Add(new PostDetailViewModel(post));
