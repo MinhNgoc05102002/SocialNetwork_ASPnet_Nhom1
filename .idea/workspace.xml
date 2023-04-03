@@ -2,48 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de5f0d37-ba6d-4789-a21d-b419cf9c5cc2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/socialnetwork.metadata.v6.1" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/socialnetwork.metadata.v6.1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/socialnetwork.projects.v6.1" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/socialnetwork.projects.v6.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/SocialNetwork/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/SocialNetwork/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/SocialNetwork/FileContentIndex/4da9f131-aa07-4c05-8773-7da1313cd11c.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/SocialNetwork/FileContentIndex/7a377d94-b7f6-4862-86b1-67dac4d06b1e.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/SocialNetwork/FileContentIndex/af184250-b11d-4a1f-aa13-7bb88c15e534.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/SocialNetwork/FileContentIndex/f9b119c4-1af0-4fae-bb70-c87a1997b645.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/SocialNetwork/FileContentIndex/e3cbe862-074c-4c6b-9bcd-f912ab97586e.vsidx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/SocialNetwork/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/SocialNetwork/v17/.futdcache.v2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/SocialNetwork/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/SocialNetwork/v17/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/Controllers/AccountController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/Controllers/AdminController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/Controllers/AdminController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/Controllers/MessagesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/Controllers/MessagesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/Models/ChatSession.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/Models/ChatSession.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/Models/CurrentAccount.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/Models/CurrentAccount.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/ViewComponents/PostDetailViewComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/ViewComponents/PostDetailViewComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/ViewModels/PostDetailViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/ViewModels/PostDetailViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/Views/Account/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/Views/Account/Login.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/Views/Account/Profile.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/Views/Account/Profile.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/Views/Account/Register.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/Views/Account/Register.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/Views/Account/Setting.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/Views/Account/Setting.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/Views/Home/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/Views/Shared/Components/PostDetail/Default.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/Views/Shared/Components/PostDetail/Default.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/Views/Shared/_LayoutHome.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/Views/Shared/_LayoutHome.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/Views/Shared/_PartialHeader.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/Views/Shared/_PartialHeader.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/Views/Shared/_PartialSidebar.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/Views/Shared/_PartialSidebar.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/bin/Debug/net6.0/SocialNetwork.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/bin/Debug/net6.0/SocialNetwork.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/bin/Debug/net6.0/SocialNetwork.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/bin/Debug/net6.0/SocialNetwork.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/obj/Debug/net6.0/SocialNetwork.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/obj/Debug/net6.0/SocialNetwork.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/obj/Debug/net6.0/SocialNetwork.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/obj/Debug/net6.0/SocialNetwork.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/obj/Debug/net6.0/SocialNetwork.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/obj/Debug/net6.0/SocialNetwork.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/obj/Debug/net6.0/SocialNetwork.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/obj/Debug/net6.0/SocialNetwork.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/obj/Debug/net6.0/SocialNetwork.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/obj/Debug/net6.0/SocialNetwork.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/obj/Debug/net6.0/SocialNetwork.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/obj/Debug/net6.0/SocialNetwork.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/obj/Debug/net6.0/project.razor.vs.json" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/obj/Debug/net6.0/project.razor.vs.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/obj/Debug/net6.0/ref/SocialNetwork.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/obj/Debug/net6.0/ref/SocialNetwork.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/obj/Debug/net6.0/refint/SocialNetwork.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/obj/Debug/net6.0/refint/SocialNetwork.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/obj/SocialNetwork.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/obj/SocialNetwork.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/obj/project.nuget.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +42,7 @@
       <workItem from="1679846638516" duration="70000" />
       <workItem from="1679897441101" duration="72000" />
       <workItem from="1679898134149" duration="206000" />
+      <workItem from="1680504547904" duration="92000" />
     </task>
     <servers />
   </component>
