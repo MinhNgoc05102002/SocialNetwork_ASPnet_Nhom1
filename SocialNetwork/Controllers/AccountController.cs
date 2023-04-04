@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SocialNetwork.Models;
+using SocialNetwork.Models.Authentication;
 
 namespace SocialNetwork.Controllers
 {
@@ -78,6 +79,7 @@ namespace SocialNetwork.Controllers
         }
 
         // =================== Profile ===================
+        [Authentication]
         public IActionResult Profile(int accountId)
         {
             // chắc là sẽ thêm tham số mã tài khoản nhận vào ở đây
@@ -89,6 +91,7 @@ namespace SocialNetwork.Controllers
         }
 
         // =================== Setting ===================
+        [Authentication]
         public IActionResult Setting()
         {
             var account = db.Accounts.SingleOrDefault(x => x.Email == CurrentAccount.account.Email);
@@ -96,6 +99,7 @@ namespace SocialNetwork.Controllers
         }
 
         [HttpPost]
+        [Authentication]
         public IActionResult setting(Account model)
         {
             var account = db.Accounts.SingleOrDefault(x => x.Email == CurrentAccount.account.Email);
