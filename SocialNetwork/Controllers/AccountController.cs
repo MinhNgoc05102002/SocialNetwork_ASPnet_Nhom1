@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SocialNetwork.Models;
+using SocialNetwork.ViewModels;
 
 namespace SocialNetwork.Controllers
 {
     public class AccountController : Controller
     {
         SocialNetworkDbContext db = new SocialNetworkDbContext();
+
         public IActionResult Index()
         {
             return View();
@@ -76,13 +78,34 @@ namespace SocialNetwork.Controllers
         }
 
         // =================== Profile ===================
-        public IActionResult Profile(int accountId)
+        public IActionResult Profile(int? accountId)
         {
+            // Xử lí trường hợp accountId bị null hoặc < 1
+            if (accountId == null || accountId < 1)
+            {
+                accountId = CurrentAccount.account.AccountId;
+            }
             // chắc là sẽ thêm tham số mã tài khoản nhận vào ở đây
             var account = db.Accounts.SingleOrDefault(x => x.AccountId == accountId);
 
             int postCount = db.Posts.Count(x => x.AccountId == accountId);
             ViewBag.PostCount = postCount;
+            
+            // Lấy danh sách các post detail của tài khoản
+            var lstPost = db.Posts.Where(x => x.AccountId == accountId).ToList();
+            List<PostDetailViewModel> lstPostDetail = new List<PostDetailViewModel>();
+            foreach (var item in lstPost)
+            {
+                lstPostDetail.Add(new PostDetailViewModel(item));
+            }
+            ViewBag.ListPostDetail = lstPostDetail;
+
+            // Kiểm tra có đang theo dõi tài khoản này hay không
+            bool following = db.Relationships.Where(x => x.SourceAccountId == CurrentAccount.account.AccountId
+                                                      && x.TargetAccountId == accountId)
+                                             .ToList()
+                                             .Count != 0;
+            ViewBag.Following = following;
             return View(account);
         }
 

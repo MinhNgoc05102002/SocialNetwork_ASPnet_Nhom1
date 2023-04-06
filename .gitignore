@@ -1,0 +1,75 @@
+# ASP.NET Core
+wwwroot/lib/
+
+# Visual Studio Code
+.vscode/
+
+# Visual Studio
+.vs/
+*.obj
+*.dll
+*.pch
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.pidb
+*.ipch
+*.exp
+*.pdb
+*.aps
+*.cps
+*.vbw
+*.bsc
+*.sbr
+*.sdf
+*.opensdf
+*.vc.db
+*.VC.VC.opendb
+*.VC.db
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+*_net461/
+*_netcoreapp2.2/
+*_netcoreapp3.1/
+*_net5.0/
+*.exe
+*.pdb
+*.dll
+*.map
+*.csv
+*.log
+*.generated.cs
+
+# NuGet Packages
+*.nupkg
+packages/
+*.nuget.props
+*.nuget.targets
+
+# MSTest Test Results
+TestResults/
+
+# Legacy ASP.NET
+obj/
+Bin/
+
+# Models directory
+/Models/*.cs
+
+# Program file
+/Program.cs
