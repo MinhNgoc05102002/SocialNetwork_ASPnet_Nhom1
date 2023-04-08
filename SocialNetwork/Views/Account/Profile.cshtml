@@ -22,13 +22,15 @@
         </div>
         <div class="list-item">
             <form id="upload-form" method="post" enctype="multipart/form-data" asp-action="UploadAvatar">
-                <button class="item" onclick="selectImage()">
+                <button class="item" onclick="selectImage()" style="color: rgb(185 28 28);">
                     Tải ảnh lên
                 </button>
-                <button class="item" onclick="location.href=window.location.href;">Gỡ ảnh hiện tại</button>
-                <button class="item" onclick="$.modal.close();">Hủy</button>
                 <input name="image" id="input-file" accept="image/jpeg,image/png" class="item" type="file">
             </form>
+            <form method="post" asp-action="RemoveAvatar">
+                <button class="item" onclick="location.href=window.location.href;">Gỡ ảnh hiện tại</button>
+            </form>
+            <button class="item" onclick="$.modal.close();">Hủy</button>
         </div>
     </div>
 

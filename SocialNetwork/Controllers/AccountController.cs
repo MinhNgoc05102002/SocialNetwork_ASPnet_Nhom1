@@ -179,5 +179,14 @@ namespace SocialNetwork.Controllers
             return RedirectToAction("Profile", "Account");
         }
 
+        [HttpPost]
+        public IActionResult RemoveAvatar()
+        {
+            var account = db.Accounts.SingleOrDefault(x => x.Email == CurrentAccount.account.Email);
+            account.Avatar = "images/avatars/default.jpg";
+            CurrentAccount.account.Avatar = account.Avatar;
+            db.SaveChanges();
+            return RedirectToAction("Profile", "Account");
+        }
     }
 }
