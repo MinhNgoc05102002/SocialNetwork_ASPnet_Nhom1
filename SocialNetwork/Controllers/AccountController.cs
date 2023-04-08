@@ -2,147 +2,182 @@
 using SocialNetwork.Models;
 using SocialNetwork.Models.Authentication;
 using SocialNetwork.ViewModels;
-
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace SocialNetwork.Controllers
 {
-	public class AccountController : Controller
-	{
-		SocialNetworkDbContext db = new SocialNetworkDbContext();
+    public class AccountController : Controller
+    {
+        private IHostingEnvironment _env;
+        SocialNetworkDbContext db = new SocialNetworkDbContext();
 
-		public IActionResult Index()
-		{
-			return View();
-		}
+        public AccountController(IHostingEnvironment _enviroment)
+        {
+            _env = _enviroment;
+        }
 
-		// =================== Login ===================
-		[HttpGet]
-		public IActionResult Login()
-		{
-			if (HttpContext.Session.GetInt32("accountId") == null)
-			{
-				return View();
-			}
-			else
-			{
-				return RedirectToAction("Index", "Home");
-			}
-		}
+        public IActionResult Index()
+        {
+            return View();
+        }
 
-		[HttpPost]
-		public IActionResult Login(string email, string password)
-		{
-			if (HttpContext.Session.GetInt32("accountId") == null)
-			{
-				var account = db.Accounts.SingleOrDefault(x => x.Email == email && x.Password == password);
-				if (account != null)
-				{
-					HttpContext.Session.SetInt32("accountId", account.AccountId);
-					CurrentAccount.initSession(account.AccountId);
-					return RedirectToAction("Index", "Home");
-				}
-				ModelState.AddModelError("Email", "Invalid email or password");
-				return View();
-			}
-			return RedirectToAction("Index", "Home");
-		}
+        // =================== Login ===================
+        [HttpGet]
+        public IActionResult Login()
+        {
+            if (HttpContext.Session.GetInt32("accountId") == null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
 
-		// =================== Logout ===================
-		public IActionResult Logout()
-		{
-			// xử lý action logout sau đó chuyển về view login 
-			HttpContext.Session.Clear();
-			HttpContext.Session.Remove("accountId");
-			return RedirectToAction("Login", "Account");
-		}
+        [HttpPost]
+        public IActionResult Login(string email, string password)
+        {
+            if (HttpContext.Session.GetInt32("accountId") == null)
+            {
+                var account = db.Accounts.SingleOrDefault(x => x.Email == email && x.Password == password);
+                if (account != null)
+                {
+                    HttpContext.Session.SetInt32("accountId", account.AccountId);
+                    CurrentAccount.initSession(account.AccountId);
+                    return RedirectToAction("Index", "Home");
+                }
+                ModelState.AddModelError("Email", "Invalid email or password");
+                return View();
+            }
+            return RedirectToAction("Index", "Home");
+        }
 
-		// =================== Register ===================
-		[HttpGet]
-		public IActionResult Register()
-		{
-			return View();
-		}
+        // =================== Logout ===================
+        public IActionResult Logout()
+        {
+            // xử lý action logout sau đó chuyển về view login 
+            HttpContext.Session.Clear();
+            HttpContext.Session.Remove("accountId");
+            return RedirectToAction("Login", "Account");
+        }
 
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public IActionResult Register(Account account)
-		{
-			if (db.Accounts.FirstOrDefault(x => x.Email == account.Email) != null)
-			{
-				ModelState.AddModelError("Email", "Email has already been taken.");
-				return View(account);
-			}
-			if (ModelState.IsValid)
-			{
-				db.Accounts.Add(account);
-				db.SaveChanges();
-				return RedirectToAction("", "");
-			}
-			return View();
-		}
+        // =================== Register ===================
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
 
-		// =================== Profile ===================
-		[Authentication]
-		public IActionResult Profile(int accountId)
-		{
-			int maxAccountId = db.Accounts.Max(x => x.AccountId);
-			// Xử lí trường hợp accountId bị null hoặc < 1 hoặc > maxAccountId
-			if (accountId == null || accountId < 1 || accountId > maxAccountId)
-			{
-				accountId = CurrentAccount.account.AccountId;
-			}
-			// chắc là sẽ thêm tham số mã tài khoản nhận vào ở đây
-			var account = db.Accounts.SingleOrDefault(x => x.AccountId == accountId);
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Register(Account account)
+        {
+            if (db.Accounts.FirstOrDefault(x => x.Email == account.Email) != null)
+            {
+                ModelState.AddModelError("Email", "Email has already been taken.");
+                return View(account);
+            }
+            if (ModelState.IsValid)
+            {
+                db.Accounts.Add(account);
+                db.SaveChanges();
+                return RedirectToAction("", "");
+            }
+            return View();
+        }
 
-			int postCount = db.Posts.Count(x => x.AccountId == accountId);
-			ViewBag.PostCount = postCount;
+        // =================== Profile ===================
+        [Authentication]
+        public IActionResult Profile(int accountId)
+        {
+            int maxAccountId = db.Accounts.Max(x => x.AccountId);
+            // Xử lí trường hợp accountId bị null hoặc < 1 hoặc > maxAccountId
+            if (accountId == null || accountId < 1 || accountId > maxAccountId)
+            {
+                accountId = CurrentAccount.account.AccountId;
+            }
+            // chắc là sẽ thêm tham số mã tài khoản nhận vào ở đây
+            var account = db.Accounts.SingleOrDefault(x => x.AccountId == accountId);
 
-			// Lấy danh sách các post detail của tài khoản
-			var lstPost = db.Posts.Where(x => x.AccountId == accountId).ToList();
-			List<PostDetailViewModel> lstPostDetail = new List<PostDetailViewModel>();
-			foreach (var item in lstPost)
-			{
-				lstPostDetail.Add(new PostDetailViewModel(item));
-			}
-			ViewBag.ListPostDetail = lstPostDetail;
+            int postCount = db.Posts.Count(x => x.AccountId == accountId);
+            ViewBag.PostCount = postCount;
 
-			// Kiểm tra có đang theo dõi tài khoản này hay không
-			bool following = db.Relationships.Where(x => x.SourceAccountId == CurrentAccount.account.AccountId
-													  && x.TargetAccountId == accountId)
-											 .ToList()
-											 .Count != 0;
-			ViewBag.Following = following;
-			return View(account);
-		}
+            // Lấy danh sách các post detail của tài khoản
+            var lstPost = db.Posts.Where(x => x.AccountId == accountId).ToList();
+            List<PostDetailViewModel> lstPostDetail = new List<PostDetailViewModel>();
+            foreach (var item in lstPost)
+            {
+                lstPostDetail.Add(new PostDetailViewModel(item));
+            }
+            ViewBag.ListPostDetail = lstPostDetail;
 
-		// =================== Setting ===================
-		[Authentication]
-		public IActionResult Setting()
-		{
-			var account = db.Accounts.SingleOrDefault(x => x.Email == CurrentAccount.account.Email);
-			return View(account);
-		}
+            // Kiểm tra có đang theo dõi tài khoản này hay không
+            bool following = db.Relationships.Where(x => x.SourceAccountId == CurrentAccount.account.AccountId
+                                                      && x.TargetAccountId == accountId)
+                                             .ToList()
+                                             .Count != 0;
+            ViewBag.Following = following;
+            return View(account);
+        }
 
-		[HttpPost]
-		[Authentication]
-		public IActionResult setting(Account model, string accountType)
-		{
-			var account = db.Accounts.SingleOrDefault(x => x.Email == CurrentAccount.account.Email);
-			account.FullName = model.FullName;
-			account.AboutMe = model.AboutMe;
-			account.Location = model.Location;
-			account.Phone = model.Phone;
-			if (accountType == "public")
-			{
-				account.AccountType = "Public";
-			}
-			else
-			{
-				account.AccountType = "Private";
-			}
-			db.SaveChanges();
-			return View(account);
-		}
+        // =================== Setting ===================
+        [Authentication]
+        public IActionResult Setting()
+        {
+            var account = db.Accounts.SingleOrDefault(x => x.Email == CurrentAccount.account.Email);
+            return View(account);
+        }
 
-	}
+        [HttpPost]
+        [Authentication]
+        public IActionResult setting(Account model, string accountType)
+        {
+            var account = db.Accounts.SingleOrDefault(x => x.Email == CurrentAccount.account.Email);
+            account.FullName = model.FullName;
+            account.AboutMe = model.AboutMe;
+            account.Location = model.Location;
+            account.Phone = model.Phone;
+            if (accountType == "public")
+            {
+                account.AccountType = "Public";
+            }
+            else
+            {
+                account.AccountType = "Private";
+            }
+            db.SaveChanges();
+            return View(account);
+        }
+
+        // =================== Avatar ===================
+        [HttpPost]
+        public IActionResult UploadAvatar(IFormFile image)
+        {
+            while (image == null)
+            {
+                System.Threading.Thread.Sleep(100);
+            }
+            var account = db.Accounts.SingleOrDefault(x => x.Email == CurrentAccount.account.Email);
+            var serverMapPath = Path.Combine(_env.WebRootPath, "images/avatars/" + CurrentAccount.account.AccountId);
+            var serverMapPathFile = Path.Combine(serverMapPath, image.FileName);
+            Directory.CreateDirectory(serverMapPath);
+            var files = Directory.GetFiles(serverMapPath);
+            foreach (var file in files)
+            {
+                System.IO.File.Delete(file);
+            }
+            using (var stream = new FileStream(serverMapPathFile, FileMode.Create))
+            {
+                image.CopyTo(stream);
+            }
+            var filepath = "images/avatars/" + CurrentAccount.account.AccountId + "/" + image.FileName;
+            account.Avatar = filepath;
+            CurrentAccount.account.Avatar = account.Avatar;
+            db.SaveChanges();
+
+            return RedirectToAction("Profile", "Account");
+        }
+
+    }
 }
