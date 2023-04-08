@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SocialNetwork.Models;
 using SocialNetwork.Models.Authentication;
 using System.Diagnostics;
@@ -61,8 +62,8 @@ namespace SocialNetwork.Controllers
 					{
 						image.CopyTo(stream);
 					}
-					string filepath = "https://localhost:7150/" + "images/post/" + CurrentAccount.account.AccountId + "/" + image.FileName;
-					var postID = post.PostId;
+                    var filepath = "images/avatars/" + CurrentAccount.account.AccountId + "/" + image.FileName;
+                    var postID = post.PostId;
 					medium.PostId = post.PostId;
 					medium.MediaLink = filepath.ToString();
 					medium.MediaType = image.GetType().Name.ToString();
@@ -72,5 +73,18 @@ namespace SocialNetwork.Controllers
 			context.SaveChanges();
 			return RedirectToAction("Index");
 		}
-	}
+
+        public IActionResult DeletePost(string postId)
+		{
+            Post post = context.Posts.SingleOrDefault(x => x.PostId.ToString() == postId);
+            if (post != null)// && CurrentAccount.account.AccountId == post.AccountId)
+			{
+                post.IsDeleted = true;
+                context.Entry(post).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+			
+            return RedirectToAction("Index");
+        }
+    }
 }
