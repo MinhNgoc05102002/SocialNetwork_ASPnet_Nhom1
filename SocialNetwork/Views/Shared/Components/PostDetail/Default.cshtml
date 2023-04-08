@@ -57,10 +57,16 @@
             }
 
             @* Nếu chỉ có 1 ảnh*@
-            @if (lstMediaSize < 2)
+            @if(lstMediaSize == 0)
             {
                 <a href="#story-modal-@item.Post.PostId" uk-toggle>
-                    <img src="/assets/images/post/img4.jpg" alt="">
+                   
+                </a>
+            }
+            else if (lstMediaSize < 2)
+            {
+                <a href="#story-modal-@item.Post.PostId" uk-toggle>
+                    <img src="@item.GetListMedia()[0].MediaLink" alt="">
                 </a>
             }
             else
@@ -69,22 +75,25 @@
 
                 <div class="grid grid-cols-2 gap-2 p-2">
                     <a href="#story-modal-@item.Post.PostId" class="col-span-2" uk-toggle>
-                        <img src="/assets/images/post/img9.jpg" alt="" class="rounded-md w-full lg:h-76 object-cover">
+                        <img src="@item.GetListMedia()[0].MediaLink" alt="" class="rounded-md w-full lg:h-76 object-cover">
                     </a>
                     @if (lstMediaSize == 2)
                     {
                         <a href="#story-modal-@item.Post.PostId" class="col-span-2" uk-toggle>
-                            <img src="/assets/images/post/img9.jpg" alt="" class="rounded-md w-full lg:h-76 object-cover">
+                            <img src="@item.GetListMedia()[1].MediaLink" alt="" class="rounded-md w-full lg:h-76 object-cover">
                         </a>
                     }
                     else
                     {
                         <a href="#story-modal-@item.Post.PostId" uk-toggle>
-                            <img src="/assets/images/post/img10.jpg" alt="" class="rounded-md w-full h-full">
+                            <img src="@item.GetListMedia()[1].MediaLink" alt="" class="rounded-md w-full h-full">
                         </a>
                         <a href="#story-modal-@item.Post.PostId" class="relative" uk-toggle>
-                            <img src="/assets/images/post/img11.jpg" alt="" class="rounded-md w-full h-full">
-                            <div class="absolute bg-gray-900 bg-opacity-30 flex justify-center items-center text-white rounded-md inset-0 text-2xl"> + 15 more </div>
+                            <img src="@item.GetListMedia()[2].MediaLink" alt="" class="rounded-md w-full h-full">
+                            @{
+                                var imageNumber = lstMediaSize - 3;
+                            }
+                            <div class="absolute bg-gray-900 bg-opacity-30 flex justify-center items-center text-white rounded-md inset-0 text-2xl"> + @lstMediaSize more </div>
                         </a>
                     }   
                 </div>
