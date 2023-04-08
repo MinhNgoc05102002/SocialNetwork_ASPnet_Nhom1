@@ -80,6 +80,7 @@ namespace SocialNetwork.Controllers
             }
             if (ModelState.IsValid)
             {
+                account.Avatar = "images/avatars/default.jpg";
                 db.Accounts.Add(account);
                 db.SaveChanges();
                 return RedirectToAction("", "");
