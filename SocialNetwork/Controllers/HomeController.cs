@@ -41,7 +41,6 @@ namespace SocialNetwork.Controllers
 		public IActionResult CreatePost(string Content, List<IFormFile> images)
 		{
 			Post post = new Post();
-			Medium medium = new Medium();
 			post.AccountId = CurrentAccount.account.AccountId;
 			post.Content = Content;
 			post.CreateAt = DateTime.Now;
@@ -62,7 +61,7 @@ namespace SocialNetwork.Controllers
 						image.CopyTo(stream);
 					}
 					string filepath = "/images/post/" + CurrentAccount.account.AccountId + "/" + image.FileName;
-					var postID = post.PostId;
+					Medium medium = new Medium();
 					medium.PostId = post.PostId;
 					medium.MediaLink = filepath.ToString();
 					medium.MediaType = image.GetType().Name.ToString();
@@ -73,17 +72,17 @@ namespace SocialNetwork.Controllers
 			return RedirectToAction("Index");
 		}
 
-        public IActionResult DeletePost(string postId)
+		public IActionResult DeletePost(string postId)
 		{
-            Post post = context.Posts.SingleOrDefault(x => x.PostId.ToString() == postId);
-            if (post != null)// && CurrentAccount.account.AccountId == post.AccountId)
+			Post post = context.Posts.SingleOrDefault(x => x.PostId.ToString() == postId);
+			if (post != null)// && CurrentAccount.account.AccountId == post.AccountId)
 			{
-                post.IsDeleted = true;
-                context.Entry(post).State = EntityState.Modified;
-                context.SaveChanges();
-            }
+				post.IsDeleted = true;
+				context.Entry(post).State = EntityState.Modified;
+				context.SaveChanges();
+			}
 
-            return RedirectToAction("Index");
-        }
-    }
+			return RedirectToAction("Index");
+		}
+	}
 }
