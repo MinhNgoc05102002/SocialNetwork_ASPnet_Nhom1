@@ -194,5 +194,40 @@ namespace SocialNetwork.Controllers
     
             return View(new ChatSessionMessagesViewModel(listSearch, null, null));
         }
+
+        [HttpGet]
+        [Route("/messages/creategroup")]
+        public IActionResult CreateGroup()
+        {
+            List<Account> accounts = dbContext.Accounts.Where(x => x.AccountId != CurrentAccount.account.AccountId).ToList();
+            return View(accounts);
+        }
+
+        [HttpPost]
+        public IActionResult CreateGroup(string nameGroup, string member)
+        {
+            ChatSession tmp = new ChatSession();
+            tmp.Name = nameGroup;
+            dbContext.ChatSessions.Add(tmp);
+            dbContext.SaveChanges();
+            int newChatId = dbContext.ChatSessions.Max(x => x.ChatId);
+            //
+            Account acc = dbContext.Accounts.SingleOrDefault(x => x.AccountId == CurrentAccount.account.AccountId);
+            tmp.Accounts.Add(acc);
+            acc.Chats.Add(tmp);
+            List<string> listID = member.Split(',').ToList();
+            foreach (var item in listID)
+            {
+                Account partner = dbContext.Accounts.SingleOrDefault(x => x.AccountId == Int32.Parse(item));
+                if (partner != null)
+                {
+                    tmp.Accounts.Add(partner);
+                    partner.Chats.Add(tmp);
+                }
+            }
+            dbContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }

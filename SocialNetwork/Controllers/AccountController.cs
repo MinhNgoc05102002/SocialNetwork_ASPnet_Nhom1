@@ -43,6 +43,11 @@ namespace SocialNetwork.Controllers
                 var account = db.Accounts.SingleOrDefault(x => x.Email == email && x.Password == password);
                 if (account != null)
                 {
+                    if(account.IsBanned == true)
+                    {
+                        ModelState.AddModelError("Email", "Your account is banned!");
+                        return View();
+                    }
                     HttpContext.Session.SetInt32("accountId", account.AccountId);
                     CurrentAccount.initSession(account.AccountId);
                     return RedirectToAction("Index", "Home");
@@ -114,7 +119,7 @@ namespace SocialNetwork.Controllers
             }
             
             // Đếm số lượng post của account này
-            int postCount = db.Posts.Count(x => x.AccountId == accountId);
+            int postCount = db.Posts.Count(x => x.AccountId == accountId && x.IsDeleted == false);
             ViewBag.PostCount = postCount;
 
             // Lấy danh sách các post detail của tài khoản

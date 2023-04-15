@@ -19,7 +19,7 @@
         {
             public static int getPostCount()
             {
-                return new SocialNetworkDbContext().Posts.Count(x => x.AccountId == account.AccountId);
+                return new SocialNetworkDbContext().Posts.Count(x => x.AccountId == account.AccountId && x.IsDeleted == false);
             }
 
             public static List<Notification> getListNotification()
