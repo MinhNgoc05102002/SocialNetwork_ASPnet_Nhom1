@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\MyPc\\Desktop\\Ki2Nam3\\LTWeb\\BTL\\Project\\SocialNetwork\\SocialNetwork\\SocialNetwork.csproj": {}
+    "C:\\Users\\MyPc\\Desktop\\Ki2Nam3\\LTWeb\\BTL\\FINISH\\SocialNetwork_ASPnet_Nhom1\\SocialNetwork\\SocialNetwork.csproj": {}
   },
   "projects": {
-    "C:\\Users\\MyPc\\Desktop\\Ki2Nam3\\LTWeb\\BTL\\Project\\SocialNetwork\\SocialNetwork\\SocialNetwork.csproj": {
+    "C:\\Users\\MyPc\\Desktop\\Ki2Nam3\\LTWeb\\BTL\\FINISH\\SocialNetwork_ASPnet_Nhom1\\SocialNetwork\\SocialNetwork.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MyPc\\Desktop\\Ki2Nam3\\LTWeb\\BTL\\Project\\SocialNetwork\\SocialNetwork\\SocialNetwork.csproj",
+        "projectUniqueName": "C:\\Users\\MyPc\\Desktop\\Ki2Nam3\\LTWeb\\BTL\\FINISH\\SocialNetwork_ASPnet_Nhom1\\SocialNetwork\\SocialNetwork.csproj",
         "projectName": "SocialNetwork",
-        "projectPath": "C:\\Users\\MyPc\\Desktop\\Ki2Nam3\\LTWeb\\BTL\\Project\\SocialNetwork\\SocialNetwork\\SocialNetwork.csproj",
+        "projectPath": "C:\\Users\\MyPc\\Desktop\\Ki2Nam3\\LTWeb\\BTL\\FINISH\\SocialNetwork_ASPnet_Nhom1\\SocialNetwork\\SocialNetwork.csproj",
         "packagesPath": "C:\\Users\\MyPc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MyPc\\Desktop\\Ki2Nam3\\LTWeb\\BTL\\Project\\SocialNetwork\\SocialNetwork\\obj\\",
+        "outputPath": "C:\\Users\\MyPc\\Desktop\\Ki2Nam3\\LTWeb\\BTL\\FINISH\\SocialNetwork_ASPnet_Nhom1\\SocialNetwork\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\MyPc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -42,7 +42,7 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.3, )"
+              "version": "[7.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",

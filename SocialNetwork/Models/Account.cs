@@ -39,6 +39,8 @@ public partial class Account
 
     public bool? Gender { get; set; }
 
+    public bool? IsBanned { get; set; }
+
     public virtual ICollection<Comment> Comments { get; } = new List<Comment>();
 
     public virtual ICollection<Message> Messages { get; } = new List<Message>();
@@ -46,10 +48,6 @@ public partial class Account
     public virtual ICollection<Notification> Notifications { get; } = new List<Notification>();
 
     public virtual ICollection<Post> PostsNavigation { get; } = new List<Post>();
-
-    public virtual ICollection<Relationship> RelationshipSourceAccounts { get; } = new List<Relationship>();
-
-    public virtual ICollection<Relationship> RelationshipTargetAccounts { get; } = new List<Relationship>();
 
     public virtual ICollection<ChatSession> Chats { get; } = new List<ChatSession>();
 
